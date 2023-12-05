@@ -9,12 +9,13 @@
     "clean": "rm -rf .turbo node_modules",
     "lint": "eslint .",
     "format": "prettier --check . --ignore-path ../../.gitignore",
-    "push": "drizzle-kit push:mysql",
+    "push": "drizzle-kit push:pg",
     "studio": "drizzle-kit studio",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@planetscale/database": "^1.11.0",
+    "@neondatabase/serverless": "^0.6.0",
+    "@paralleldrive/cuid2": "^2.2.2",
     "drizzle-orm": "^0.29.1"
   },
   "devDependencies": {

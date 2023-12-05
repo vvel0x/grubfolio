@@ -12,8 +12,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@acme/auth": "workspace:^0.1.0",
     "@acme/db": "workspace:^0.1.0",
+    "@clerk/nextjs": "^4.27.3",
     "@trpc/client": "next",
     "@trpc/server": "next",
     "superjson": "2.2.1",
