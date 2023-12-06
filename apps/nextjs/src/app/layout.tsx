@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import { headers } from "next/headers";
 import { ClerkProvider } from "@clerk/nextjs";
 import { neobrutalism } from "@clerk/themes";
+import { cx } from "class-variance-authority";
 
 import { TRPCReactProvider } from "~/trpc/react";
 
@@ -33,7 +34,7 @@ export default function Layout(props: { children: React.ReactNode }) {
       }}
     >
       <html lang="en" className="h-full">
-        <body className={["h-full", "font-sans", fontSans.variable].join(" ")}>
+        <body className={cx("h-full", "font-sans", fontSans.variable)}>
           <TRPCReactProvider headersPromise={getHeaders()}>
             {props.children}
           </TRPCReactProvider>
