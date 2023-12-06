@@ -1,6 +1,7 @@
 import { UserButton } from "@clerk/nextjs";
 
 import Logo from "~/components/Misc/Logo";
+import { links } from "~/lib/navigation";
 import NavItem from "./NavItem";
 
 export default function Navbar() {
@@ -15,10 +16,9 @@ export default function Navbar() {
               <Logo className="h-8 w-auto sm:hidden" />
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-              <NavItem href="/" label="Home" isActive />
-              <NavItem href="/recipes" label="Recipes" />
-              <NavItem href="/collections" label="Collections" />
-              <NavItem href="/planner" label="Planner" />
+              {links.map((link) => (
+                <NavItem key={link.href} href={link.href} label={link.label} />
+              ))}
             </div>
           </div>
 

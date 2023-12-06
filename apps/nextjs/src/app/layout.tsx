@@ -7,7 +7,6 @@ import { headers } from "next/headers";
 import { ClerkProvider } from "@clerk/nextjs";
 import { neobrutalism } from "@clerk/themes";
 
-import Navbar from "~/components/Navigation/Navbar";
 import { TRPCReactProvider } from "~/trpc/react";
 
 const fontSans = Inter({
@@ -36,10 +35,7 @@ export default function Layout(props: { children: React.ReactNode }) {
       <html lang="en" className="h-full">
         <body className={["h-full", "font-sans", fontSans.variable].join(" ")}>
           <TRPCReactProvider headersPromise={getHeaders()}>
-            <div className="min-h-full bg-zinc-50">
-              <Navbar />
-              {props.children}
-            </div>
+            {props.children}
           </TRPCReactProvider>
         </body>
       </html>
