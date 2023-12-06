@@ -1,23 +1,17 @@
 import "~/styles/globals.css";
 
+import { cache } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { headers } from "next/headers";
 import { ClerkProvider } from "@clerk/nextjs";
 
-import { TRPCReactProvider } from "./providers";
+import { TRPCReactProvider } from "~/trpc/react";
 
 const fontSans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
 });
-
-/**
- * Since we're passing `headers()` to the `TRPCReactProvider` we need to
- * make the entire app dynamic. You can move the `TRPCReactProvider` further
- * down the tree (e.g. /dashboard and onwards) to make part of the app statically rendered.
- */
-export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Recipe App",
@@ -30,12 +24,18 @@ export const metadata: Metadata = {
   },
 };
 
+// Lazy load headers
+// eslint-disable-next-line @typescript-eslint/require-await
+const getHeaders = cache(async () => {
+  return headers();
+});
+
 export default function Layout(props: { children: React.ReactNode }) {
   return (
     <ClerkProvider>
       <html lang="en">
         <body className={["font-sans", fontSans.variable].join(" ")}>
-          <TRPCReactProvider headers={headers()}>
+          <TRPCReactProvider headersPromise={getHeaders()}>
             {props.children}
           </TRPCReactProvider>
         </body>
