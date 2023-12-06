@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { UserButton } from "@clerk/nextjs";
 
 import AuthState from "./AuthState";
 
@@ -15,6 +16,8 @@ export default function HomePage() {
         <Suspense fallback={<p>Loading...</p>}>
           <AuthState />
         </Suspense>
+
+        <UserButton />
       </div>
     </main>
   );
