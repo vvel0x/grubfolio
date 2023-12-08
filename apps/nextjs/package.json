@@ -27,6 +27,7 @@
     "@trpc/react-query": "next",
     "@trpc/server": "next",
     "class-variance-authority": "^0.7.0",
+    "geist": "^1.2.0",
     "next": "^14.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",

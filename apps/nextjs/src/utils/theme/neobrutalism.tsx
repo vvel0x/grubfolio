@@ -31,7 +31,7 @@ export const theme = cva(
       },
       padding: {
         none: "p-0",
-        default: "pb-2 pt-1.5 px-3",
+        default: "py-2 px-3",
       },
       shadow: shadowVariants,
     },
