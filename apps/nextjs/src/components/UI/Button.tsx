@@ -24,23 +24,36 @@ export const buttonTheme = cva("active:scale-95", {
   },
 });
 
-export interface ButtonProps
-  extends ThemeProps,
-    VariantProps<typeof buttonTheme>,
-    React.ButtonHTMLAttributes<HTMLButtonElement> {}
+const ButtonDefaultAsType = "button" as const;
+type ButtonDefaultAsType = typeof ButtonDefaultAsType;
 
-export function Button(props: ButtonProps) {
-  const { variant, c, shadow, aspect, padding, className, children, ...rest } =
-    props;
+interface ButtonOwnProps<E extends React.ElementType>
+  extends ThemeProps,
+    VariantProps<typeof buttonTheme> {
+  children: React.ReactNode;
+  as?: E;
+}
+
+type ButtonProps<E extends React.ElementType> = ButtonOwnProps<E> &
+  Omit<React.ComponentProps<E>, keyof ButtonOwnProps<E>>;
+
+export const Button = <E extends React.ElementType = ButtonDefaultAsType>({
+  children,
+  as,
+  ...props
+}: ButtonProps<E>) => {
+  const { variant, c, shadow, aspect, padding, className, ...rest } = props;
 
   const buttonStyles = cx(
     theme({ variant, c, shadow, padding, className }),
     buttonTheme({ c, aspect }),
   );
 
+  const Tag = as ?? ButtonDefaultAsType;
+
   return (
-    <button className={buttonStyles} {...rest}>
+    <Tag className={buttonStyles} {...rest}>
       {children}
-    </button>
+    </Tag>
   );
-}
+};
