@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { cva, cx } from "class-variance-authority";
 
 import type { ThemeColourProps, ThemeProps } from "~/utils/theme/neobrutalism";
@@ -24,10 +25,7 @@ interface TextInputProps
   extends ThemeProps,
     React.InputHTMLAttributes<HTMLInputElement> {}
 
-/**
- * Renders an input field component. Defaults to a text input.
- */
-export function InputField(props: TextInputProps) {
+function Input(props: TextInputProps, ref: React.Ref<HTMLInputElement>) {
   const { variant, c, padding, shadow, className, ...rest } = props;
 
   const styles = cx(
@@ -35,5 +33,10 @@ export function InputField(props: TextInputProps) {
     inputTheme({ c }),
   );
 
-  return <input type="text" className={styles} {...rest} />;
+  return <input type="text" className={styles} ref={ref} {...rest} />;
 }
+
+/**
+ * Renders an input field component. Defaults to a text input.
+ */
+export const InputField = forwardRef(Input);
