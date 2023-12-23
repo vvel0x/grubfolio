@@ -7,12 +7,15 @@ import type { ThemeProps } from "~/utils/theme/neobrutalism";
 export interface CardProps extends HTMLAttributes<HTMLDivElement>, ThemeProps {}
 
 export default function Card(props: CardProps) {
-  const { variant, c, shadow, className, children, ...rest } = props;
+  const { variant, c, shadow, padding, className, children, ...rest } = props;
 
   const styles = cx("overflow-hidden", className);
 
   return (
-    <div className={theme({ variant, c, shadow, className: styles })} {...rest}>
+    <div
+      className={theme({ variant, c, shadow, padding, className: styles })}
+      {...rest}
+    >
       {children}
     </div>
   );

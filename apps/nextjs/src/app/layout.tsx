@@ -11,7 +11,10 @@ import { GeistSans } from "geist/font/sans";
 import { TRPCReactProvider } from "~/trpc/react";
 
 export const metadata: Metadata = {
-  title: "Recipe App",
+  title: {
+    template: "%s - Recipe App",
+    default: "Recipe App",
+  },
   description: "Simple recipe manager with best in class UX",
 };
 

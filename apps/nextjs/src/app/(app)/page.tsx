@@ -6,11 +6,9 @@ import { CheckBox } from "~/components/UI/CheckBox";
 import { IconButton } from "~/components/UI/IconButton";
 import { InputField } from "~/components/UI/InputField";
 
-export const runtime = "edge";
-
 export default function HomePage() {
   return (
-    <main className="container mx-auto my-4 h-screen space-y-4 px-4">
+    <main className="space-y-4">
       <div className="inline-flex space-x-4">
         <Button>Button</Button>
         <Button c="red" variant="rounded">

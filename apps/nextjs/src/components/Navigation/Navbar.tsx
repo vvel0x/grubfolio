@@ -6,7 +6,7 @@ import NavItem from "./NavItem";
 
 export default function Navbar() {
   return (
-    <div className="bg-white shadow">
+    <div className="border-b border-slate-100 bg-white">
       <div className="container mx-auto px-4">
         <div className="flex h-16 justify-between">
           {/* Left section */}

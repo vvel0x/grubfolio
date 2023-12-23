@@ -3,7 +3,7 @@ import { cx } from "class-variance-authority";
 import type { ButtonProps } from "./Button";
 import { Button } from "./Button";
 
-export function IconButton(props: ButtonProps) {
+export function IconButton(props: ButtonProps<"button">) {
   const { children, className, ...rest } = props;
 
   return (

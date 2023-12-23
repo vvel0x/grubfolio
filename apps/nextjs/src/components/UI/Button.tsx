@@ -34,7 +34,7 @@ interface ButtonOwnProps<E extends React.ElementType>
   as?: E;
 }
 
-type ButtonProps<E extends React.ElementType> = ButtonOwnProps<E> &
+export type ButtonProps<E extends React.ElementType> = ButtonOwnProps<E> &
   Omit<React.ComponentProps<E>, keyof ButtonOwnProps<E>>;
 
 export const Button = <E extends React.ElementType = ButtonDefaultAsType>({
